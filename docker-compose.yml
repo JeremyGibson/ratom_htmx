@@ -1,0 +1,16 @@
+version: "3.4"
+
+volumes:
+  dev_ratom_htmx_data: {}
+
+services:
+  db:
+    environment:
+      POSTGRES_HOST_AUTH_METHOD: trust
+      POSTGRES_DB: ratom_htmx
+      DATABASE_URL: postgres://postgres@127.0.01:54678/ratom_htmx
+    image: postgres:14-alpine
+    ports:
+      - "54678:5432"
+    volumes:
+      - dev_ratom_htmx_data:/var/lib/postgresql/data

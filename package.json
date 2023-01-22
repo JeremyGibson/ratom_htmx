@@ -1,0 +1,43 @@
+{
+  "name": "ratom_htmx",
+  "version": "0.0.1",
+  "private": true,
+  "description": "ratom_htmx",
+  "main": "index.js",
+  "prettier": "eslint-config-vinta/prettier",
+  "scripts": {
+    "dev": "gulp",
+    "build": "NODE_ENV=production ./node_modules/.bin/webpack --progress --config webpack.config.js --bail",
+    "build:css": "postcss ./ratom_htmx/assets/styles/tailwind_entry.css -o ratom_htmx/static/css/main.css --env 'production' --verbose"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ]
+  },
+  "dependencies": {
+    "@babel/core": "^7.20.12",
+    "@babel/preset-env": "^7.20.2",
+    "@sentry/webpack-plugin": "^1.20.0",
+    "@tailwindcss/typography": "^0.5.9",
+    "autoprefixer": "^10.4.13",
+    "babel-loader": "^9.1.2",
+    "cssnano": "^5.1.14",
+    "fs-jetpack": "^5.1.0",
+    "gulp": "^4.0.2",
+    "gulp-postcss": "^9.0.1",
+    "gulp-rename": "^2.0.0",
+    "jquery": "^3.6.3",
+    "postcss": "^8.4.21",
+    "postcss-cli": "^10.1.0",
+    "postcss-import": "^15.1.0",
+    "postcss-preset-env": "^7.8.3",
+    "prettier": "^2.8.3",
+    "tailwindcss": "^3.2.4",
+    "webpack": "^5.75.0",
+    "webpack-bundle-tracker": "^1.8.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-merge": "^5.8.0",
+    "webpack-stream": "^7.0.0"
+  }
+}

@@ -1,0 +1,31 @@
+# Dev requirements
+-c ../base/base.txt
+
+django-debug-toolbar
+ipython
+invoke
+pre-commit
+black
+coverage
+invoke-kubesae
+awscli
+boto
+
+# For testing
+factory_boy
+
+axe-selenium-python==2.1.6
+
+
+
+pytest
+pytest-cov
+pytest-django
+pytest-subtests
+
+
+
+beautifulsoup4
+
+
+
