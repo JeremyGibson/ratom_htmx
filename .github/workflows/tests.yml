@@ -50,7 +50,6 @@ jobs:
           python3 -m venv env
           . env/bin/activate
           make setup
-      {% if cookiecutter.include_accessibility_tests == 'yes' %}
       #----------------------------------------------
       # install geckodriver
       #----------------------------------------------
@@ -60,7 +59,6 @@ jobs:
             tar -zxvf geckodriver.tar.gz
             sudo mv geckodriver /usr/local/bin
             sudo chown root:root /usr/local/bin/geckodriver
-      {% endif %}
       #----------------------------------------------
       # install your root project, if required
       #----------------------------------------------
@@ -68,11 +66,11 @@ jobs:
         run: |
           . env/bin/activate
           make run-tests
-  
+
         env:
           DJANGO_SETTINGS_MODULE: ratom_htmx.settings.dev
           DATABASE_URL: postgres://postgres:postgres@127.0.0.1:5432/postgres
-  
+
       - name: Job Notification
         uses: 8398a7/action-slack@v3
         with:
@@ -81,4 +79,4 @@ jobs:
         env:
           SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }} # required
         if: always() # Pick up events even if the job fails or is canceled.
-  
+
