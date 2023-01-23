@@ -1,4 +1,3 @@
-
 from django.shortcuts import reverse
 
 import pytest
@@ -7,7 +6,6 @@ from selenium import webdriver
 
 
 @pytest.mark.parametrize("page_name,page_url", [("homepage", reverse("home"))])
-
 def test_accessibility_on_pages(
     live_server, django_db_serialized_rollback, settings, page_name, page_url
 ):
@@ -32,9 +30,7 @@ def test_accessibility_on_pages(
 
     # If there are violations, then write them to a file
     if len(results["violations"]) > 0:
-        violations_filename = (
-            f"apps/ratom_htmx/tests/violations_{page_name}.json"
-        )
+        violations_filename = f"apps/ratom_htmx/tests/violations_{page_name}.json"
         axe.write_results(results["violations"], violations_filename)
 
     # Assert that there are no violations, or print out the titles
