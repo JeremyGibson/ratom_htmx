@@ -58,7 +58,10 @@ for backend in TEMPLATES:
             backend["APP_DIRS"] = False
         loaders = backend["OPTIONS"].get("loaders", default_loaders)
         for loader in loaders:
-            if len(loader) == 2 and loader[0] == "django.template.loaders.cached.Loader":
+            if (
+                len(loader) == 2
+                and loader[0] == "django.template.loaders.cached.Loader"
+            ):
                 # We're already caching our templates
                 break
         else:

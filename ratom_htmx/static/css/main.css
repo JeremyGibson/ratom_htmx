@@ -469,13 +469,6 @@ video {
   --tw-backdrop-saturate:  ;
   --tw-backdrop-sepia:  ;
 }
-.test_div {
-  display: flex;
-  flex-direction: column;
-  padding: 1rem;
-  --tw-text-opacity: 1;
-  color: rgba(254, 226, 226, var(--tw-text-opacity));
-}
 /* Global Setup
     Gives a flex column global flow and allows for a sticky footer
   */

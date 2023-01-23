@@ -11,19 +11,15 @@ urlpatterns = [
 ]
 
 
-
 urlpatterns += [
-
-path("", HomePageView.as_view(), name="home"),
-
-
+    path("", HomePageView.as_view(), name="home"),
 ]
 
 if settings.DEBUG:
-    import debug_toolbar
     from django.conf.urls.static import static
     from django.contrib.staticfiles.urls import staticfiles_urlpatterns
-    from django.views.generic import TemplateView
+
+    import debug_toolbar
 
     # Serve static and media files from development server
     urlpatterns += staticfiles_urlpatterns()

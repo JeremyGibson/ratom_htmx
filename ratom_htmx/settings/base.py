@@ -41,7 +41,6 @@ INSTALLED_APPS = [
 ]
 
 
-
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
     "whitenoise.middleware.WhiteNoiseMiddleware",
@@ -51,7 +50,6 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
-    
 ]
 
 ROOT_URLCONF = "ratom_htmx.urls"
@@ -218,9 +216,6 @@ LOGGING = {
 }
 
 
-
-
-
 SEARCH_PAGE_SIZE = 10
 ADMINS = os.getenv(
     "ADMINS",
@@ -232,4 +227,6 @@ ADMINS = os.getenv(
     ],
 )
 
-DEFAULT_FROM_EMAIL = os.getenv("DEFAULT_FROM_EMAIL", "no-reply@ratom_htmx.gibbysoft.com")
+DEFAULT_FROM_EMAIL = os.getenv(
+    "DEFAULT_FROM_EMAIL", "no-reply@ratom_htmx.gibbysoft.com"
+)

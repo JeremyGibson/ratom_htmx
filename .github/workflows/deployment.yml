@@ -18,28 +18,14 @@ jobs:
       AWS_DEFAULT_REGION: ${{ secrets.AWS_DEFAULT_REGION }}
       IS_CI: "True"
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/checkout@v3
+      - uses: actions/setup-python@v4
         with:
-          python-version: 3.9.6
+          python-version: '3.9'
 
       #----------------------------------------------
       # Deploy the project
       #----------------------------------------------
-      - name: Ping Slack
-        uses: 8398a7/action-slack@v3
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
-        with:
-          status: custom
-          fields: repo,author
-          custom_payload: |
-            {
-              attachments: [{
-                color: 'good',
-                text: `:deploying:`,
-              }]
-            }
       - name: Deploy to Staging
         id: staging-deploy
         run: |
@@ -55,12 +41,3 @@ jobs:
 #          inv production aws.docker-login
 #          inv production image deploy --verbosity=0
         if: ${{ github.ref == 'refs/heads/main' }}
-      - name: Ping channel final
-        uses: 8398a7/action-slack@v3
-        with:
-          status: ${{ job.status }}
-          fields: all
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
-        if: always()
-  
