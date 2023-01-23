@@ -49,6 +49,8 @@ aws_ec2.yml
 .coverage
 coverage
 htmlcov/
+geckodriver.log
+axe_report
 
 # Environment
 .direnv

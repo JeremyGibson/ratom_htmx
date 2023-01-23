@@ -1,8 +1,16 @@
+from pathlib import Path
+
 from django.shortcuts import reverse
 
 import pytest
 from axe_selenium_python import Axe
 from selenium import webdriver
+
+
+AXE_REPORT_DIR = Path("axe_report/")
+
+if not AXE_REPORT_DIR.exists():
+    AXE_REPORT_DIR.mkdir(parents=True, exist_ok=True)
 
 
 @pytest.mark.parametrize("page_name,page_url", [("homepage", reverse("home"))])
@@ -27,10 +35,9 @@ def test_accessibility_on_pages(
     axe.inject()
     # Run axe accessibility checks.
     results = axe.run()
-
     # If there are violations, then write them to a file
+    violations_filename = AXE_REPORT_DIR / f"{page_name}_violations.json"
     if len(results["violations"]) > 0:
-        violations_filename = f"apps/ratom_htmx/tests/violations_{page_name}.json"
         axe.write_results(results["violations"], violations_filename)
 
     # Assert that there are no violations, or print out the titles
