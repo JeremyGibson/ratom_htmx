@@ -55,12 +55,11 @@ jobs:
 #          inv production aws.docker-login
 #          inv production image deploy --verbosity=0
         if: ${{ github.ref == 'refs/heads/main' }}
-      - name: Ping channel final
-        uses: 8398a7/action-slack@v3
-        with:
-          status: ${{ job.status }}
-          fields: all
-        env:
-          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
-        if: always()
-  
+#      - name: Ping channel final
+#        uses: 8398a7/action-slack@v3
+#        with:
+#          status: ${{ job.status }}
+#          fields: all
+#        env:
+#          SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK }}
+#        if: always()
